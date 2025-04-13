@@ -51,7 +51,7 @@
 ## **🚀 Установка и запуск**  
 1. **Клонируйте репозиторий:**  
    ```bash
-   git clone https://github.com/Seobgi/cybersyndicatecode.git
+   git clone https://github.com/Seb0g1/cybersyndicatecode.git
    ```  
 2. **Установите зависимости:**  
    ```bash
