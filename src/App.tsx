@@ -83,7 +83,7 @@ const tiers = [
       monitor: '27" 144Hz',
       mouse: 'Logitech G102 LIGHTSYNC',
       keyboard: 'HyperX Alloy Origins',
-      headphones: 'HyperX',
+      headphones: 'Havit',
     },
     color: 'from-red-700 to-red-600',
     shadowColor: 'shadow-red-600/20',
@@ -113,32 +113,11 @@ const tiers = [
 
 const ps5Prices = {
   hour: '400₽',
-  threeHours: '1000₽',
-  overnight: '1500₽'
+  threeHours: '1100₽',
+  overnight: '2000₽'
 };
 
-const games = [
-  { name: 'Counter-Strike 2', platforms: ['pc'] },
-  { name: 'Dota 2', platforms: ['pc'] },
-  { name: 'WARFACE', platforms: ['pc'] },
-  { name: 'Fortnite', platforms: ['pc'] },
-  { name: 'VALORANT', platforms: ['pc'] },
-  { name: 'STARCRAFT II', platforms: ['pc'] },
-  { name: 'Rage MP', platforms: ['pc'] },
-  { name: 'Majestic', platforms: ['pc'] },
-  { name: 'Legends Of Runeterra', platforms: ['pc'] },
-  { name: 'OverWatch', platforms: ['pc'] },
-  { name: 'Marvel Rivals', platforms: ['pc'] },
-  { name: 'GTA V', platforms: ['pc', 'ps5'] },
-  { name: 'FIFA 24', platforms: ['ps5'] },
-  { name: 'FIFA 25', platforms: ['ps5'] },
-  { name: 'Mortal Kombat 11', platforms: ['ps5'] },
-  { name: 'UFC 4', platforms: ['ps5'] },
-  { name: 'UFC 5', platforms: ['ps5'] },
-  { name: 'NBA 2K25', platforms: ['ps5'] },
-  { name: 'GranTurismo 7', platforms: ['ps5'] },
-  { name: 'TEKKEN 8', platforms: ['ps5'] },
-];
+
 
 const scrollToSection = (id: string) => {
   const element = document.getElementById(id);
@@ -262,7 +241,6 @@ function App() {
             <div className="hidden md:flex items-center gap-8">
               <button onClick={() => scrollToSection('pc')} className="text-gray-300 hover:text-white transition-colors">PC Gaming</button>
               <button onClick={() => scrollToSection('ps5')} className="text-gray-300 hover:text-white transition-colors">PlayStation 5</button>
-              <button onClick={() => scrollToSection('games')} className="text-gray-300 hover:text-white transition-colors">Игры</button>
               <button onClick={() => scrollToSection('contacts')} className="text-gray-300 hover:text-white transition-colors">Контакты</button>
               <a 
                 href="https://langame.ru/654375375_computerniy_club_cyber-syndicate_moskva" 
@@ -289,7 +267,6 @@ function App() {
           <div className="px-4 py-4 space-y-4">
             <button onClick={() => { scrollToSection('pc'); setIsMenuOpen(false); }} className="block w-full text-left text-gray-300 hover:text-white transition-colors">PC Gaming</button>
             <button onClick={() => { scrollToSection('ps5'); setIsMenuOpen(false); }} className="block w-full text-left text-gray-300 hover:text-white transition-colors">PlayStation 5</button>
-            <button onClick={() => { scrollToSection('games'); setIsMenuOpen(false); }} className="block w-full text-left text-gray-300 hover:text-white transition-colors">Игры</button>
             <button onClick={() => { scrollToSection('contacts'); setIsMenuOpen(false); }} className="block w-full text-left text-gray-300 hover:text-white transition-colors">Контакты</button>
             <a 
               href="https://langame.ru/654375375_computerniy_club_cyber-syndicate_moskva" 
@@ -454,70 +431,6 @@ function App() {
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Games Section */}
-      <div id="games" className="py-20 px-4 bg-gradient-to-b from-black to-red-950/20 scroll-mt-16">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-center mb-16 bg-gradient-to-r from-red-500 to-white bg-clip-text text-transparent">
-            Доступные игры
-          </h2>
-          
-          <div className="flex justify-center gap-4 mb-12">
-            <button 
-              onClick={() => setSelectedPlatform('all')}
-              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300
-                ${selectedPlatform === 'all' 
-                  ? 'bg-gradient-to-r from-red-700 to-red-600 text-white' 
-                  : 'bg-zinc-900 text-gray-400 hover:text-white'}`}
-            >
-              Все
-            </button>
-            <button 
-              onClick={() => setSelectedPlatform('pc')}
-              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300
-                ${selectedPlatform === 'pc' 
-                  ? 'bg-gradient-to-r from-red-700 to-red-600 text-white' 
-                  : 'bg-zinc-900 text-gray-400 hover:text-white'}`}
-            >
-              PC
-            </button>
-            <button 
-              onClick={() => setSelectedPlatform('ps5')}
-              className={`px-6 py-2 rounded-full font-semibold transition-all duration-300
-                ${selectedPlatform === 'ps5' 
-                  ? 'bg-gradient-to-r from-red-700 to-red-600 text-white' 
-                  : 'bg-zinc-900 text-gray-400 hover:text-white'}`}
-            >
-              PS5
-            </button>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            {filteredGames.map((game) => (
-              <div 
-                key={game.name}
-                className="bg-zinc-900/50 backdrop-blur-sm border border-red-900/20 rounded-xl p-4 hover:border-red-500/50 transition-all duration-300"
-              >
-                <h3 className="text-lg font-semibold mb-2">{game.name}</h3>
-                <div className="flex gap-2">
-                  {game.platforms.map((platform) => (
-                    <span 
-                      key={platform}
-                      className={`text-sm px-3 py-1 rounded-full ${
-                        platform === 'pc' 
-                          ? 'bg-red-900/30 text-red-400' 
-                          : 'bg-blue-900/30 text-blue-400'
-                      }`}
-                    >
-                      {platform.toUpperCase()}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </div>
